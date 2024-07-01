@@ -17,7 +17,7 @@ abstract class BoundedStack<T> {
 	
 	// конструктор
 	// постусловие: создан новый пустой стек, кол-во элементов которого ограничено maxSize
-	public BoundedStack(int maxSize) {	} 
+	public BoundedStack(int maxSize) {} 
 	
 	// команды:
 	
