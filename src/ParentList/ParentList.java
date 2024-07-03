@@ -219,13 +219,13 @@ class ParentListImpl<T> extends ParentList<T> {
 		if(this.current == null) {
 			put_left_status = PUT_LEFT_ERR;
 		} else {
-            Node<T> newNode = new Node<>(value);
-            newNode.setNextNode(this.current);
-            newNode.setPreviousNode(this.current.previousNode());
-            this.current.previousNode().setNextNode(newNode);
-            this.current.setPreviousNode(newNode);
-            this.size ++;
-            put_left_status = PUT_LEFT_OK;
+			Node<T> newNode = new Node<>(value);
+			newNode.setNextNode(this.current);
+			newNode.setPreviousNode(this.current.previousNode());
+			this.current.previousNode().setNextNode(newNode);
+			this.current.setPreviousNode(newNode);
+			this.size ++;
+			put_left_status = PUT_LEFT_OK;
 		}
 	}
 
