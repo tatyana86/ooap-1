@@ -40,7 +40,7 @@ abstract class ParentList<T> {
 	// постусловие: создан пустой список
 	public ParentList() { }
 			
-	// команды
+	// команды:
 	
 	// предусловие: список не пуст
 	// постусловие: курсор установлен на первый узел в списке
@@ -65,8 +65,8 @@ abstract class ParentList<T> {
 	// предусловие: список не пуст
 	// постусловие: удален текущий узел, 
 	// (курсор смещается к правому соседу, если он есть, 
-    // в противном случае курсор смещается к левому соседу, 
-    // если он есть)
+	// в противном случае курсор смещается к левому соседу, 
+	// если он есть)
 	public abstract void remove();
 	
 	// постусловие: из списка удаляются все узлы
@@ -86,7 +86,7 @@ abstract class ParentList<T> {
 	// постусловие: из списка удаляются все узлы со значением value
 	public abstract void remove_all(T value);
 	
-	// запросы
+	// запросы:
 	
 	// предусловие: список не пуст
 	public abstract T get();
@@ -113,9 +113,7 @@ abstract class ParentList<T> {
 	public abstract int get_get_status(); // возвращает значение GET_*		
 }
 
-abstract class LinkedList<T> extends ParentList<T> {
-	
-}
+abstract class LinkedList<T> extends ParentList<T> { }
 
 abstract class TwoWayList<T> extends ParentList<T> {
 	
@@ -149,8 +147,8 @@ class ParentListImpl<T> extends ParentList<T> {
 	private int size;
 	
 	protected Dummy<T> head = new Dummy<>(null);
-    private Dummy<T> tail = new Dummy<>(null);
-    protected Node<T> current = null;
+	private Dummy<T> tail = new Dummy<>(null);
+	protected Node<T> current = null;
 	
 	// конструктор	
 	public ParentListImpl() {
@@ -205,12 +203,12 @@ class ParentListImpl<T> extends ParentList<T> {
 			put_right_status = PUT_RIGHT_ERR;
 		} else {
 			Node<T> newNode = new Node<>(value);
-            newNode.setNextNode(this.current.nextNode());
-            newNode.setPreviousNode(this.current);
-            this.current.nextNode().setPreviousNode(newNode);
-            this.current.setNextNode(newNode);
-            this.size ++;
-            put_right_status = PUT_RIGHT_OK;
+			newNode.setNextNode(this.current.nextNode());
+			newNode.setPreviousNode(this.current);
+			this.current.nextNode().setPreviousNode(newNode);
+			this.current.setNextNode(newNode);
+			this.size ++;
+			put_right_status = PUT_RIGHT_OK;
 		}
 	}
 
@@ -219,8 +217,8 @@ class ParentListImpl<T> extends ParentList<T> {
 	@Override
 	public void put_left(T value) {
 		if(this.current == null) {
-            put_left_status = PUT_LEFT_ERR;
-        } else {
+			put_left_status = PUT_LEFT_ERR;
+		} else {
             Node<T> newNode = new Node<>(value);
             newNode.setNextNode(this.current);
             newNode.setPreviousNode(this.current.previousNode());
@@ -228,33 +226,33 @@ class ParentListImpl<T> extends ParentList<T> {
             this.current.setPreviousNode(newNode);
             this.size ++;
             put_left_status = PUT_LEFT_OK;
-        }
+		}
 	}
 
 	// предусловие: список не пуст
 	// постусловие: удален текущий узел, 
 	// (курсор смещается к правому соседу, если он есть, 
-    // в противном случае курсор смещается к левому соседу, 
-    // если он есть)
+	// в противном случае курсор смещается к левому соседу, 
+	// если он есть)
 	@Override
 	public void remove() {
-        if(this.current == null) {
-            remove_status = REMOVE_ERR;
-        } else {
-            this.current.previousNode().setNextNode(this.current.nextNode());
-            this.current.nextNode().setPreviousNode(this.current.previousNode());
-            
-            if(this.current.nextNode() != this.tail) {
-            	this.current = this.current.nextNode();
-            } else if(this.current.previousNode() != this.head) {
-            	this.current = this.current.previousNode();
-            } else {
-            	this.current = null;
-            }
-            
-            this.size --;
-            remove_status = REMOVE_OK;
-        }
+    	if(this.current == null) {
+			remove_status = REMOVE_ERR;
+		} else {
+			this.current.previousNode().setNextNode(this.current.nextNode());
+			this.current.nextNode().setPreviousNode(this.current.previousNode());
+			
+			if(this.current.nextNode() != this.tail) {
+				this.current = this.current.nextNode();
+			} else if(this.current.previousNode() != this.head) {
+				this.current = this.current.previousNode();
+			} else {
+				this.current = null;
+			}
+			
+			this.size --;
+			remove_status = REMOVE_OK;
+		}
 	}
 
 	// постусловие: из списка удаляются все узлы
@@ -275,9 +273,9 @@ class ParentListImpl<T> extends ParentList<T> {
 			Node<T> newNode = new Node<>(value);
 			
 			this.tail.previousNode().setNextNode(newNode);
-            newNode.setPreviousNode(this.tail.previousNode());
-            newNode.setNextNode(this.tail);
-            this.tail.setPreviousNode(newNode);
+			newNode.setPreviousNode(this.tail.previousNode());
+			newNode.setNextNode(this.tail);
+			this.tail.setPreviousNode(newNode);
 			
 			this.current = newNode;
 			this.size ++;
@@ -323,9 +321,9 @@ class ParentListImpl<T> extends ParentList<T> {
 	@Override
 	public void remove_all(T value) {
 		if(this.current == null) {
-            remove_all_status = REMOVE_ALL_ERR;
-            return;
-        }
+        	remove_all_status = REMOVE_ALL_ERR;
+        	return;
+		}
 		Node<T> node = this.head.nextNode();
 		while(node != this.tail) {
 			if(node.value == value) {
@@ -343,13 +341,13 @@ class ParentListImpl<T> extends ParentList<T> {
 	// предусловие: список не пуст
 	@Override
 	public T get() {
-        if(this.current == null) {
-            get_status = GET_ERR;
-            return null;
-        } else {
-            get_status = GET_OK;
-            return this.current.value;
-        }
+		if(this.current == null) {
+		    get_status = GET_ERR;
+		    return null;
+		} else {
+		    get_status = GET_OK;
+		    return this.current.value;
+		}
 	}
 
 	@Override
@@ -476,22 +474,22 @@ class LinkedListImpl<T> extends ParentListImpl<T> {
 }
 
 class TwoWayListImpl<T> extends ParentListImpl<T> {
-    private final int LEFT_OK = 1; // последняя left() отработала нормально
-    private final int LEFT_ERR = 2; // список пуст или курсор указывает на первый элемент
+	private final int LEFT_OK = 1; // последняя left() отработала нормально
+	private final int LEFT_ERR = 2; // список пуст или курсор указывает на первый элемент
+	
+	// скрытые поля
+	private int left_status; // статус команды right()
+	
+	// конструктор
+	protected TwoWayListImpl() {
+	    super();
+	}
     
-    // скрытые поля
-    private int left_status; // статус команды right()
-
-    // конструктор
-    protected TwoWayListImpl() {
-        super();
-    }
-    
-    // команды:
+	// команды:
     
 	// предусловие: список не пуст и курсор не указывает на первый элемент в списке
 	// постусловие: курсор сдвинут на один узел влево
-    public void left() {
+	public void left() {
         if(this.current == null || this.current == this.head.nextNode()) {
             left_status = LEFT_ERR;
         } else {
