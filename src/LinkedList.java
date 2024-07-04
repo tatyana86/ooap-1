@@ -98,15 +98,15 @@ abstract class LinkedList<T> {
 	// запросы
 	
 	// предусловие: список не пуст
-	public abstract void get();
+	public abstract T get();
 	
 	public abstract int size();
 	
-	public abstract void is_head();
+	public abstract boolean is_head();
 	
-	public abstract void is_tail();
+	public abstract boolean is_tail();
 	
-	public abstract void is_value();
+	public abstract boolean is_value();
 	
 	// дополнительные запросы:
 	public abstract int get_head_status(); // возвращает значение HEAD_*
