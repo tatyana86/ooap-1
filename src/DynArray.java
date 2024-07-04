@@ -1,4 +1,4 @@
-package ParentList;
+
 
 import java.lang.reflect.Array;
 
@@ -53,32 +53,32 @@ class DynArryaImpl<T> extends DynArray<T> {
 	private int get_status; // статус команды get()
 	
 	public T [] array;
-    public int count;
-    public int capacity;
-    Class clazz;
+	public int count;
+	public int capacity;
+	Class clazz;
     
-    // конструктор с размером стека по умолчанию
+	// конструктор с размером стека по умолчанию
 	public DynArryaImpl(Class clz) {
 		this.clazz = clz;
 		this.count = 0;
 		makeArray(MIN_CAPACITY);
 	}
 	
-    private void makeArray(int new_capacity)
-    {
-        if(new_capacity < MIN_CAPACITY) {
-            new_capacity = MIN_CAPACITY;
-        }
-
-        T [] tempArray = (T[]) Array.newInstance(this.clazz, new_capacity);
-
-        if(this.count > 0) {
-            System.arraycopy(array, 0, tempArray, 0, this.count);
-        }
-
-        this.array = tempArray;
-        this.capacity = new_capacity;
-    }
+	private void makeArray(int new_capacity)
+	{
+	    if(new_capacity < MIN_CAPACITY) {
+	        new_capacity = MIN_CAPACITY;
+	    }
+	
+	    T [] tempArray = (T[]) Array.newInstance(this.clazz, new_capacity);
+	
+	    if(this.count > 0) {
+	        System.arraycopy(array, 0, tempArray, 0, this.count);
+	    }
+	
+	    this.array = tempArray;
+	    this.capacity = new_capacity;
+	}
 	
 	// команды:
 	
@@ -92,24 +92,24 @@ class DynArryaImpl<T> extends DynArray<T> {
 		}
 		
 		if(this.count == this.capacity) {
-            makeArray(2 * this.capacity);
-        }
+	        makeArray(2 * this.capacity);
+	    }
 		
 		System.arraycopy(this.array, i, this.array, i + 1, this.count - i);
-        this.array[i] = value;
-        this.count ++;
+	    this.array[i] = value;
+	    this.count ++;
 		
-        insert_status = INSERT_OK;
+	    insert_status = INSERT_OK;
 	}
 
 	// постусловие: добавлен элемент в конец
 	@Override
 	public void append(T itm) {
 		if(this.count == this.capacity) {
-            makeArray(2 * this.capacity);
-        }
-        array[this.count] = itm;
-        this.count ++;
+	        makeArray(2 * this.capacity);
+	    }
+	    array[this.count] = itm;
+	    this.count ++;
 	}
 
 	// предусловие: индекс в допустимых границах
@@ -122,13 +122,12 @@ class DynArryaImpl<T> extends DynArray<T> {
 		}
 		
 		System.arraycopy(this.array, i + 1, this.array, i, this.count - i - 1);
-        this.array[count - 1] = null;
-        this.count --;
-
-        if(this.count < (this.capacity * MIN_FULLNESS)) {
-            makeArray((int) (this.capacity / REDUCTION_FACTOR));
-        }
+		this.array[count - 1] = null;
+		this.count --;
 		
+		if(this.count < (this.capacity * MIN_FULLNESS)) {
+		    makeArray((int) (this.capacity / REDUCTION_FACTOR));
+		}
 	}
 
 	// запросы:
