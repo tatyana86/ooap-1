@@ -1,5 +1,3 @@
-
-
 import java.lang.reflect.Array;
 
 abstract class DynArray<T> {
@@ -92,24 +90,24 @@ class DynArryaImpl<T> extends DynArray<T> {
 		}
 		
 		if(this.count == this.capacity) {
-	        makeArray(2 * this.capacity);
-	    }
+			makeArray(2 * this.capacity);
+		}
 		
 		System.arraycopy(this.array, i, this.array, i + 1, this.count - i);
-	    this.array[i] = value;
-	    this.count ++;
+		this.array[i] = value;
+		this.count ++;
 		
-	    insert_status = INSERT_OK;
+		insert_status = INSERT_OK;
 	}
 
 	// постусловие: добавлен элемент в конец
 	@Override
 	public void append(T itm) {
 		if(this.count == this.capacity) {
-	        makeArray(2 * this.capacity);
-	    }
-	    array[this.count] = itm;
-	    this.count ++;
+			makeArray(2 * this.capacity);
+		}
+		array[this.count] = itm;
+		this.count ++;
 	}
 
 	// предусловие: индекс в допустимых границах
@@ -126,7 +124,7 @@ class DynArryaImpl<T> extends DynArray<T> {
 		this.count --;
 		
 		if(this.count < (this.capacity * MIN_FULLNESS)) {
-		    makeArray((int) (this.capacity / REDUCTION_FACTOR));
+			makeArray((int) (this.capacity / REDUCTION_FACTOR));
 		}
 	}
 
