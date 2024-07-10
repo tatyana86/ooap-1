@@ -141,9 +141,9 @@ class HashTableImpl<T> extends HashTable<T> {
 		return remove_status;
 	}
 	
-    private LinkedList<T>[] init(int capacity) {
-        return new LinkedList[capacity];
-    }
+	private LinkedList<T>[] init(int capacity) {
+		return new LinkedList[capacity];
+	}
 	
 	private int seekSlot(T value) {
 		int hashFun = value.toString().chars().sum();
