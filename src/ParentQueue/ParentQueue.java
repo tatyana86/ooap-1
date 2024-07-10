@@ -71,7 +71,7 @@ abstract class Deque<T> extends ParentQueue<T> {
 	// предусловие: очередь не пуста
 	public abstract T get_tail();
 
-	public abstract int size(); // размер очереди
+	//public abstract int size(); // размер очереди
 
 	// дополнительные запросы:
 	public abstract int get_remove_tail_status(); // возвращает значение REMOVE_TAIL_*
