@@ -60,8 +60,8 @@ class NativeDictionaryImpl<T> extends NativeDictionary<T> {
 	@Override
 	public void put(String key, T value) {
 		int slot = hashFun(key);
-        this.slots[slot] = key;
-        this.values[slot] = value;
+		this.slots[slot] = key;
+		this.values[slot] = value;
 	}
 
 	// предусловие: ключ есть в массиве
