@@ -39,7 +39,7 @@ class PowerSetImpl<T> extends HashTableImpl<T> {
 		return newSet;
 	}
 
-    // возвращает объединение исходного и set множеств
+	// возвращает объединение исходного и set множеств
 	public PowerSetImpl<T> union(PowerSetImpl<T> set) {
 		PowerSetImpl<T> newSet = new PowerSetImpl<>(this.capacity + set.capacity);
 		for(T slot : this.slots) {
@@ -53,7 +53,7 @@ class PowerSetImpl<T> extends HashTableImpl<T> {
 		return newSet;
 	}
 
-    // возвращает разницу исходного и set множеств
+	// возвращает разницу исходного и set множеств
 	public PowerSetImpl<T> difference(PowerSetImpl<T> set){
 		PowerSetImpl<T> newSet = new PowerSetImpl<>(this.capacity);
 		for (T slot : this.slots) {
@@ -63,7 +63,7 @@ class PowerSetImpl<T> extends HashTableImpl<T> {
 		return newSet;
 	}
 
-    // проверка, является ли set подмножеством исходного множества
+	// проверка, является ли set подмножеством исходного множества
 	public boolean isSubset(PowerSetImpl<T> set) {
 		for(T slot : set.slots) {
 			if(slot != null && !this.isContain(slot)) {
