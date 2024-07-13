@@ -43,8 +43,8 @@ class HashTableImpl<T> extends HashTable<T> {
 	private int put_status; // статус команды put()
 	private int remove_status; // статус команды remove()
 	
-	private LinkedList<T>[] slots;
-	private int capacity;
+	protected LinkedList<T>[] slots;
+	protected int capacity;
 	private int sub_capacity;
 	private int freeSlots = capacity;
 	private int size;

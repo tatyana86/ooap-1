@@ -23,7 +23,7 @@ abstract class NativeDictionary<T> {
 	
 	// запросы:
 	
-	// предусловие: в таблице есть ключ
+	// проверка, что в массиве есть ключ
 	public abstract boolean isContain(String key);
 		
 	// предусловие: ключ есть в массиве
