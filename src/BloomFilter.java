@@ -11,9 +11,9 @@ abstract class BloomFilter<T> {
 	
 	// запросы:
 	
-    public abstract boolean isValue(T value); // проверка, имеется ли значение в фильтре
-
-    public abstract int size(); // размер фильтра
+	public abstract boolean isValue(T value); // проверка, имеется ли значение в фильтре
+	
+	public abstract int size(); // размер фильтра
 
 }
 
